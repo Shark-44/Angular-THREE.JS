@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+--------------------------------------------------------------------------------------------
+
+Ce n'est pas la premiere fois que je m'essaie a THREE.JS. Avec react notament.
+
+Mais je découvre Angular, je m'apercois que certains outils comme ce dernier sont communs. Ainsi j'ai suivi un tuto, corrigé des erreurs, afin d'obtenir un résultat. Une base de travail qui a travers cette approche, ameliorer ma comprehension. 
