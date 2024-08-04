@@ -31,3 +31,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Ce n'est pas la premiere fois que je m'essaie a THREE.JS. Avec react notament.
 
 Mais je découvre Angular, je m'apercois que certains outils comme ce dernier sont communs. Ainsi j'ai suivi un tuto, corrigé des erreurs, afin d'obtenir un résultat. Une base de travail qui a travers cette approche, ameliorer ma comprehension. 
+
+Un autre point que j'essaie a gerer c'est la position de l'éclairage via Dirlight
