@@ -1,10 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { NgFor } from '@angular/common';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 @Component({
   selector: 'app-car-viewer',
+  imports: [NgFor],
   standalone: true,
   templateUrl: './car-viewer.component.html',
   styleUrl: './car-viewer.component.css'
@@ -12,12 +14,17 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 export class CarViewerComponent implements OnInit, AfterViewInit {
   @ViewChild('rendererCanvas') rendererCanvas!: ElementRef;
 
+  color: string = '';
+  colors: string[] = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', ''];
+
+
   private renderer!: THREE.WebGLRenderer;
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
   private controls!: OrbitControls;
   private dirLight!: THREE.DirectionalLight;
   private dirLightHelper!: THREE.DirectionalLightHelper;
+  private dirLightColor: string = '#ffffff';
   private lightPitch: number = Math.PI / 4;
   private lightYaw: number = 0;
   private lightRadius: number = 30;
@@ -80,6 +87,7 @@ export class CarViewerComponent implements OnInit, AfterViewInit {
           child.receiveShadow = true;
           if (child.material) {
             child.material.needsUpdate = true;
+            (child.material as THREE.MeshStandardMaterial).color.set(this.color); // Appliquer la couleur ici
           }
         }
       });
@@ -144,4 +152,15 @@ export class CarViewerComponent implements OnInit, AfterViewInit {
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
+    // pour changer de couleur
+    applyColor(color: string) {
+      this.color = color;
+      this.scene.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          if (child.material) {
+            (child.material as THREE.MeshStandardMaterial).color.set(color);
+          }
+        }
+      });
+    }
 }

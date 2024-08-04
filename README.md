@@ -33,3 +33,5 @@ Ce n'est pas la premiere fois que je m'essaie a THREE.JS. Avec react notament.
 Mais je découvre Angular, je m'apercois que certains outils comme ce dernier sont communs. Ainsi j'ai suivi un tuto, corrigé des erreurs, afin d'obtenir un résultat. Une base de travail qui a travers cette approche, ameliorer ma comprehension. 
 
 Un autre point que j'essaie a gerer c'est la position de l'éclairage via Dirlight
+
+suivant une video https://www.youtube.com/watch?v=7k1lsLZRsnQ&list=LL&index=4&t=247s. je cherche a modifier la couleur. Mais la texture est generale et je me dis que je dois pouvoir cibler... Aussi enlever l'ombre.

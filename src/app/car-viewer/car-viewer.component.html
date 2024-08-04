@@ -4,5 +4,9 @@
     <div class="instructions">
       <h3>Use the mouse to move the car and the arrows for the light</h3>
     </div>
+    <div class="color-controls">
+      <h3>Choisir la Couleur:</h3>
+      <button *ngFor="let color of colors" [style.backgroundColor]="color" (click)="applyColor(color)"></button>
+    </div>
   </div>
   

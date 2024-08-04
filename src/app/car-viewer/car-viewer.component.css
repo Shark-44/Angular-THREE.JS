@@ -14,7 +14,7 @@
   .instructions {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 30px;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
@@ -22,4 +22,16 @@
     font-size: 16px;
     z-index: 10; /* Assurez-vous que le texte est au-dessus du canvas */
   }
-  
+.color-controls {
+  position: absolute;
+  top: 75px;
+  left: 30px;
+
+}  
+
+.color-controls button {
+  height: 30px;
+  border-radius: 50%;
+  width: 30px;
+  margin-left: 10px;
+}
