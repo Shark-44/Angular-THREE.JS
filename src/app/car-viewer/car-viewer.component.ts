@@ -15,7 +15,7 @@ export class CarViewerComponent implements OnInit, AfterViewInit {
   @ViewChild('rendererCanvas') rendererCanvas!: ElementRef;
 
   color: string = '';
-  colors: string[] = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', ''];
+  colors: string[] = ['#ff0000', '#00ff00', '#ffff00', '#ff00ff', '#00ffff', '#214BF8'];
 
 
   private renderer!: THREE.WebGLRenderer;
@@ -24,9 +24,9 @@ export class CarViewerComponent implements OnInit, AfterViewInit {
   private controls!: OrbitControls;
   private dirLight!: THREE.DirectionalLight;
   private dirLightHelper!: THREE.DirectionalLightHelper;
-  private dirLightColor: string = '#ffffff';
+  private dirLightColor: string = '#214BF8';
   private lightPitch: number = Math.PI / 4;
-  private lightYaw: number = 0;
+  private lightYaw: number = 20;
   private lightRadius: number = 30;
 
   constructor() { }
@@ -83,17 +83,17 @@ export class CarViewerComponent implements OnInit, AfterViewInit {
     loader.load('assets/car.glb', (gltf) => {
       gltf.scene.traverse((child) => {
         if (child instanceof THREE.Mesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
+          console.log(child.name, child.material);
           if (child.material) {
-            child.material.needsUpdate = true;
-            (child.material as THREE.MeshStandardMaterial).color.set(this.color); // Appliquer la couleur ici
+            if (child.name === 'polySurface282_main_color_0') { // Remplacez par le nom approprié
+              (child.material as THREE.MeshStandardMaterial).color.set(this.color);
+            }
           }
         }
       });
-
+  
       this.scene.add(gltf.scene);
-      
+  
       const box = new THREE.Box3().setFromObject(gltf.scene);
       const center = box.getCenter(new THREE.Vector3());
       const size = box.getSize(new THREE.Vector3());
@@ -153,11 +153,11 @@ export class CarViewerComponent implements OnInit, AfterViewInit {
     this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
     // pour changer de couleur
-    applyColor(color: string) {
+    applyColor(color: string, materialName: string) {
       this.color = color;
       this.scene.traverse((child) => {
         if (child instanceof THREE.Mesh) {
-          if (child.material) {
+          if (child.material && child.name === materialName) {
             (child.material as THREE.MeshStandardMaterial).color.set(color);
           }
         }
