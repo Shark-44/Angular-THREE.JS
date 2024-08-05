@@ -60,12 +60,12 @@ export class CarViewerComponent implements OnInit, AfterViewInit {
     this.controls.screenSpacePanning = false;
     this.controls.maxPolarAngle = Math.PI / 2;
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 2);
+    const ambientLight = new THREE.AmbientLight(0x404040, 1);
     this.scene.add(ambientLight);
 
-    this.dirLight = new THREE.DirectionalLight(0xffffff, 2);
+    this.dirLight = new THREE.DirectionalLight(0xffffff, 1);
     this.updateLightPosition();
-    this.dirLight.castShadow = true;
+    this.dirLight.castShadow = false; // ombre
     this.dirLight.shadow.mapSize.width = 1024;
     this.dirLight.shadow.mapSize.height = 1024;
     this.dirLight.shadow.camera.near = 0.5;
@@ -162,5 +162,10 @@ export class CarViewerComponent implements OnInit, AfterViewInit {
           }
         }
       });
+    }
+    onIntensityChange(event: Event) {
+      const input = event.target as HTMLInputElement;
+      const intensity = parseFloat(input.value);
+      this.dirLight.intensity = intensity;
     }
 }

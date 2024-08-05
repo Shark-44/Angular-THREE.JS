@@ -35,3 +35,9 @@
   width: 30px;
   margin-left: 10px;
 }
+.cursor {
+  position: absolute;
+  top: 200px;
+  left: 30px;
+
+}

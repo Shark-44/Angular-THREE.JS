@@ -10,6 +10,11 @@
       [style.backgroundColor]="color" 
       (click)="applyColor(color, 'polySurface282_main_color_0')"
       class="color-button">
-</button></div>
+      </button>
+    </div>
+    <div class="cursor">
+      <label for="light-intensity">Intensity: </label>
+      <input type="range" id="light-intensity" min="1" max="10" step="0.1" value="1" (input)="onIntensityChange($event)">
+    </div>
   </div>
   
